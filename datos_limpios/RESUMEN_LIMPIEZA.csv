@@ -1,0 +1,21 @@
+﻿Métrica,Valor
+Fecha de Limpieza,2025-10-16 18:02:43
+Filas Originales,21210
+Filas Limpias,21185
+Filas Eliminadas,25
+% Retenido,99.88%
+Columnas Originales,111
+Columnas Limpias,63
+Columnas WEB,30
+Columnas Eliminadas,48
+Registros Sexo Inválido,25
+Casos Estancia Extrema,6
+Pacientes Menores Edad,540
+Casos Coste Alto,190
+Edad Media,43.65
+Estancia Media,15.47
+Coste Medio,$5451.04
+Tamaño CSV WEB (MB),19.87
+Completitud Dataset WEB,92.65%
+Cobertura Diagnósticos,100.00%
+Calidad Final (0-100),85 (ALTA)
