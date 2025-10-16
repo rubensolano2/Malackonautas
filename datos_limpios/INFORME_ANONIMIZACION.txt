@@ -1,0 +1,109 @@
+
+================================================================================
+INFORME DE ANONIMIZACIÓN Y PRIVACIDAD
+Dataset: Salud Mental
+Fecha: 2025-10-16 18:44:06
+================================================================================
+
+📊 RESUMEN DE TRANSFORMACIONES
+--------------------------------------------------------------------------------
+Dataset original: 21,185 registros
+Dataset anonimizado: 19,697 registros
+Registros eliminados: 1,488 (7.02%)
+
+🔐 MEDIDAS DE PRIVACIDAD APLICADAS
+--------------------------------------------------------------------------------
+
+1. ELIMINACIÓN DE IDENTIFICADORES DIRECTOS
+   ✓ Nombres de pacientes eliminados
+   ✓ CIP SNS Recodificado eliminado (era reversible)
+   ✓ Centro Recodificado → anonimizado a IDs genéricos
+   ✓ Fecha de nacimiento eliminada (ya tenemos edad/grupos)
+   
+2. IDs 100% ALEATORIOS (NO REVERSIBLES)
+   ✓ Generados UUIDs únicos para cada registro
+   ✓ NO basados en hash de datos personales
+   ✓ Imposible revertir a identidad original
+   ✓ Ejemplo: 768b70fa-fd33-4083-957d-1d47a1836751
+
+3. GENERALIZACIÓN DE DATOS (K-ANONIMATO)
+   ✓ Fechas: Solo año-mes (sin día exacto)
+   ✓ Edad: Agrupada en rangos (Menor, Joven, Adulto, etc.)
+   ✓ Estancia: Categorizada en rangos amplios
+   ✓ K-anonimato alcanzado: k ≥ 5
+
+4. K-ANONIMATO VERIFICADO
+   ✓ K mínimo en dataset: 5
+   ✓ K máximo en dataset: 109
+   ✓ K promedio: 25.00
+   ✓ Quasi-identificadores: 5
+   ✓ Cada combinación tiene al menos 5 registros
+
+🛡️ PROTECCIÓN CONTRA RE-IDENTIFICACIÓN
+--------------------------------------------------------------------------------
+
+✓ Ataque por Hash: Imposible (IDs aleatorios, no hash)
+✓ Ataque por Fecha Nacimiento: Mitigado (solo grupos de edad)
+✓ Ataque por Combinación: Mitigado (k-anonimato ≥5)
+✓ Ataque por Centro Único: Mitigado (centros anonimizados)
+
+📋 QUASI-IDENTIFICADORES UTILIZADOS
+--------------------------------------------------------------------------------
+  • Comunidad Autónoma
+  • Sexo
+  • Grupo_Edad
+  • Año_Mes_Ingreso
+  • Categoria_Estancia
+
+
+⚠️ CONSIDERACIONES DE SEGURIDAD ADICIONALES
+--------------------------------------------------------------------------------
+
+CONFIDENCIALIDAD (para implementar en aplicación):
+  • Usar HTTPS/TLS para todas las comunicaciones
+  • Certificados válidos firmados por CA reconocida
+  • Cifrar base de datos en reposo (AES-256)
+  • Cifrar copias de seguridad
+
+AUTENTICACIÓN (para sistema de usuarios):
+  • Hash de contraseñas con bcrypt/argon2
+  • Salt único por contraseña
+  • Nunca almacenar contraseñas en claro
+  • Implementar 2FA si es posible
+
+CONTROL DE ACCESO:
+  • Logs de acceso a datos sensibles
+  • Auditoría de consultas
+  • Limitación de descargas masivas
+  • Rate limiting en APIs
+
+🎯 UTILIDAD DEL DATASET
+--------------------------------------------------------------------------------
+✓ Diagnósticos completos mantenidos
+✓ Análisis temporal posible (año-mes)
+✓ Análisis demográfico posible (grupos)
+✓ Análisis económico posible (costes mantenidos)
+✓ Análisis de severidad/mortalidad posible
+
+Balance privacidad vs utilidad: ÓPTIMO
+
+✅ CUMPLIMIENTO
+--------------------------------------------------------------------------------
+✓ K-anonimato: SÍ (k≥5)
+✓ IDs no reversibles: SÍ (UUID v4)
+✓ Identificadores directos eliminados: SÍ
+✓ Fechas generalizadas: SÍ
+✓ Protección contra re-identificación: ALTA
+
+================================================================================
+DATASET LISTO PARA PUBLICACIÓN
+================================================================================
+Archivo: SaludMental_ANONIMIZADO.csv
+Registros: 19,697
+K-anonimato: 5-109 (promedio: 25.0)
+Nivel de privacidad: ALTO
+Utilidad de datos: ALTA
+
+⚠️ RECOMENDACIÓN: Implementar medidas adicionales de confidencialidad y
+autenticación según lo indicado en este informe.
+================================================================================
